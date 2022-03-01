@@ -6,12 +6,8 @@ const PORT = process.env.PORT
 
 app.use(express.static('public'))
 
-app.get('/', (req, res) => {
-  res.json({
-    ok: true,
-    message: 'It works!!!',
-  })
-})
+// Routes
+app.use('/api/auth', require('./routes/auth'))
 
 app.listen(PORT, () => {
   console.log(`Server on port ${PORT}`)
