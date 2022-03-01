@@ -1,5 +1,10 @@
 const express = require('express')
+require('dotenv').config()
+
 const app = express()
+const PORT = process.env.PORT
+
+app.use(express.static('public'))
 
 app.get('/', (req, res) => {
   res.json({
@@ -8,6 +13,6 @@ app.get('/', (req, res) => {
   })
 })
 
-app.listen(4000, () => {
-  console.log(`Server on port ${4000}`)
+app.listen(PORT, () => {
+  console.log(`Server on port ${PORT}`)
 })
