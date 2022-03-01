@@ -1,11 +1,9 @@
 const { Router } = require('express')
+const { createUser, loginUser, renewToken } = require('../controllers/auth')
 const router = Router()
 
-router.get('/', (req, res) => {
-  res.json({
-    ok: true,
-    message: 'It works!!!',
-  })
-})
+router.post('/new', createUser)
+router.post('/', loginUser)
+router.get('/renew', renewToken)
 
 module.exports = router
