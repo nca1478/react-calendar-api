@@ -1,9 +1,14 @@
-const express = require('express')
 require('dotenv').config()
+const express = require('express')
+const { dbConnection } = require('./database/config')
 
 const app = express()
 const PORT = process.env.PORT
 
+// DB Connection
+dbConnection()
+
+// Middlewares
 app.use(express.static('public'))
 app.use(express.json())
 

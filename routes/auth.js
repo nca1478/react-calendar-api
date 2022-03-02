@@ -16,6 +16,7 @@ router.post(
   ],
   createUser
 )
+
 router.post(
   '/',
   [
@@ -27,6 +28,7 @@ router.post(
   ],
   loginUser
 )
+
 router.get('/renew', renewToken)
 
 module.exports = router
