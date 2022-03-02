@@ -1,11 +1,22 @@
 const { request, response } = require('express')
+const User = require('../models/User')
 
-const createUser = (req = request, res = response) => {
-  res.status(201).json({
-    ok: true,
-    msg: 'User created successfully',
-    user: req.body,
-  })
+const createUser = async (req = request, res = response) => {
+  try {
+    const user = new User(req.body)
+    await user.save()
+
+    res.status(201).json({
+      ok: true,
+      msg: 'User created successfully',
+    })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      ok: false,
+      msg: 'Please contact administrator',
+    })
+  }
 }
 
 const loginUser = (req = request, res = response) => {
