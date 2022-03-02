@@ -2,13 +2,27 @@ const { request, response } = require('express')
 const User = require('../models/User')
 
 const createUser = async (req = request, res = response) => {
+  const { email, password } = req.body
+
   try {
-    const user = new User(req.body)
+    let user = await User.findOne({ email })
+    if (user) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'Email already belongs to another user',
+      })
+    }
+
+    user = new User(req.body)
     await user.save()
 
     res.status(201).json({
       ok: true,
       msg: 'User created successfully',
+      user: {
+        uid: user._id,
+        name: user.name,
+      },
     })
   } catch (error) {
     console.log(error)
