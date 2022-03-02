@@ -18,7 +18,7 @@ router.post(
 )
 
 router.post(
-  '/',
+  '/login',
   [
     check('email', 'Email is not correct').isEmail(),
     check('password', 'Password must be at least 6 characters').isLength({

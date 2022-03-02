@@ -22,7 +22,7 @@ const createUser = async (req = request, res = response) => {
 
     await user.save()
 
-    res.status(201).json({
+    return res.status(201).json({
       ok: true,
       msg: 'User created successfully',
       user: {
@@ -39,12 +39,30 @@ const createUser = async (req = request, res = response) => {
   }
 }
 
-const loginUser = (req = request, res = response) => {
-  res.json({
-    ok: true,
-    msg: 'Login succesfully',
-    user: req.body,
-  })
+const loginUser = async (req = request, res = response) => {
+  const { email, password } = req.body
+
+  try {
+    let user = await User.findOne({ email })
+    if (!user) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'User not found with that email',
+      })
+    }
+
+    const validPassword = bcrypt.compareSync(password, user.password)
+    if (!validPassword) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'Password not correct',
+      })
+    }
+
+    res.status(201).json({ ok: true, user: { uid: user.id, name: user.name } })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 const renewToken = (req = request, res = response) => {
