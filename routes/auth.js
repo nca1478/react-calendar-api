@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const { createUser, loginUser, renewToken } = require('../controllers/auth')
 const { check } = require('express-validator')
+const { routerErrors } = require('../middlewares/routerErrors')
 const router = Router()
 
 router.post(
@@ -11,6 +12,7 @@ router.post(
     check('password', 'Password must be at least 6 characters').isLength({
       min: 6,
     }),
+    routerErrors,
   ],
   createUser
 )
@@ -21,6 +23,7 @@ router.post(
     check('password', 'Password must be at least 6 characters').isLength({
       min: 6,
     }),
+    routerErrors,
   ],
   loginUser
 )
