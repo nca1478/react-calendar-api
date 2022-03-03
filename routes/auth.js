@@ -1,10 +1,13 @@
 const { Router } = require('express')
-const { createUser, loginUser, renewToken } = require('../controllers/auth')
 const { check } = require('express-validator')
 const { routerErrors } = require('../middlewares/routerErrors')
 const { validateJWT } = require('../helpers/validateJwt')
 const router = Router()
 
+// Controllers
+const { createUser, loginUser, renewToken } = require('../controllers/auth')
+
+// Routes
 router.post(
   '/new',
   [
