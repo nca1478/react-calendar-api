@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const { check } = require('express-validator')
 const { routerErrors } = require('../middlewares/routerErrors')
-const { validateJWT } = require('../helpers/validateJwt')
+const { validateJWT } = require('../middlewares/validateJwt')
 const router = Router()
 
 // Controllers

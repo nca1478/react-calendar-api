@@ -1,5 +1,8 @@
 const { Router } = require('express')
-const { validateJWT } = require('../helpers/validateJwt')
+const { check } = require('express-validator')
+const { validateJWT } = require('../middlewares/validateJwt')
+const { routerErrors } = require('../middlewares/routerErrors')
+const { isDate } = require('../helpers/isDate')
 const router = Router()
 
 // Controllers
@@ -9,13 +12,21 @@ const {
   updateEvent,
   deleteEvent,
 } = require('../controllers/events')
-const { route } = require('express/lib/application')
 
 // Middlewares
 router.use(validateJWT)
 
 // Rutas
-router.post('/', createEvent)
+router.post(
+  '/',
+  [
+    check('title', 'Title is required').not().isEmpty(),
+    check('start', 'Start date is not correct').custom(isDate),
+    check('end', 'End date is not correct').custom(isDate),
+    routerErrors,
+  ],
+  createEvent
+)
 router.get('/', getEvents)
 router.put('/:id', updateEvent)
 router.delete('/:id', deleteEvent)
