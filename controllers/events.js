@@ -11,7 +11,7 @@ const createEvent = async (req, res = response) => {
 
     res.json({
       ok: true,
-      evento: eventSaved,
+      event: eventSaved,
     })
   } catch (error) {
     console.log(error)
@@ -65,19 +65,49 @@ const updateEvent = async (req, res = response) => {
 
     res.json({
       ok: true,
-      evento: eventUpdated,
+      event: eventUpdated,
     })
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'Error updating event!',
+      msg: 'Error updating event',
     })
   }
 }
 
 const deleteEvent = async (req, res = response) => {
-  res.json({ ok: true, msg: 'delete event' })
+  const eventId = req.params.id
+  const uid = req.uid
+
+  try {
+    const event = await Event.findById(eventId)
+    if (!event) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'Event not found',
+      })
+    }
+
+    if (event.user.toString() !== uid) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'You can not change this event',
+      })
+    }
+
+    await Event.findByIdAndDelete(eventId)
+    res.json({
+      ok: true,
+      msg: 'Event deleted successfully',
+    })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      ok: false,
+      msg: 'Error deleting event!',
+    })
+  }
 }
 
 module.exports = {
