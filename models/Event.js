@@ -23,4 +23,11 @@ const EventSchema = Schema({
   },
 })
 
+// Replace _id for id, remove __v
+EventSchema.method('toJSON', function () {
+  const { __v, _id, ...object } = this.toObject()
+  object.id = _id
+  return object
+})
+
 module.exports = model('Event', EventSchema)

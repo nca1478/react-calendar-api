@@ -1,8 +1,25 @@
 // Dependencias
 const { response } = require('express')
+const Event = require('../models/Event')
 
 const createEvent = async (req, res = response) => {
-  res.json({ ok: true, msg: 'create event' })
+  const event = new Event(req.body)
+
+  try {
+    event.user = req.uid
+    const eventSaved = await event.save()
+
+    res.json({
+      ok: true,
+      evento: eventSaved,
+    })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      ok: false,
+      msg: 'Error creating event!',
+    })
+  }
 }
 
 const getEvents = async (req, res = response) => {
