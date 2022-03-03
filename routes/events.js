@@ -27,8 +27,20 @@ router.post(
   ],
   createEvent
 )
+
 router.get('/', getEvents)
-router.put('/:id', updateEvent)
+
+router.put(
+  '/:id',
+  [
+    check('title', 'Title is required').not().isEmpty(),
+    check('start', 'Start date is not correct').custom(isDate),
+    check('end', 'End date is not correct').custom(isDate),
+    routerErrors,
+  ],
+  updateEvent
+)
+
 router.delete('/:id', deleteEvent)
 
 module.exports = router
