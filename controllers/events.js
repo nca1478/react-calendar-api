@@ -1,4 +1,3 @@
-// Dependencias
 const { response } = require('express')
 const Event = require('../models/Event')
 
