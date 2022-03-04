@@ -59,7 +59,7 @@ const loginUser = async (req, res = response) => {
     if (!validPassword) {
       return res.status(400).json({
         ok: false,
-        msg: 'Password not correct',
+        msg: 'Password is not correct',
       })
     }
 
@@ -77,7 +77,7 @@ const renewToken = async (req, res = response) => {
   const { uid, name } = req
   const token = await generateJWT(uid, name)
 
-  res.json({ ok: true, token })
+  res.json({ ok: true, user: { uid, name }, token })
 }
 
 module.exports = {
