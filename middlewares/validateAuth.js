@@ -15,9 +15,7 @@ const validateCreateUser = () => {
 const validateLoginUser = () => {
   return [
     check('email', 'Email is not correct').isEmail(),
-    check('password', 'Password must be at least 6 characters').isLength({
-      min: 6,
-    }),
+    check('password', 'Password is required').not().isEmpty(),
     routerErrors,
   ]
 }
