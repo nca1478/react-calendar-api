@@ -1,6 +1,6 @@
 # Calendar Api
 
-`Calendar Api` is the backend for the `Calendar App` project.
+`Calendar Api` is the backend for the Calendar App project.
 
 ## Features
 
@@ -8,7 +8,7 @@
 - Users Authentication Endpoints.
 - Data and token validation through middlewares.
 - Endpoints protected by JSON Web Token.
-- Models and Database hosted by `MongoDB Atlas`.
+- Models and Database hosted by MongoDB Atlas.
 
 ## Purpose of project
 
@@ -32,11 +32,11 @@
 
 ## Demo Calendar App
 
-- [Calendar App](https://google.com)
+- [Calendar App](https://calendar-app-njca.netlify.app/)
 
 ## Repo Calendar App
 
-- [Calendar App](https://google.com)
+- [Calendar App](https://github.com/nca1478/react-calendar-app)
 
 ## Requirements
 
