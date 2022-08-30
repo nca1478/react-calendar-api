@@ -1,18 +1,18 @@
-# Calendar Api
+# Calendario Api
 
-`Calendar Api` is the backend for the Calendar App project.
+`Calendario Api` es el backend para el proyecto de la Aplicación Calendario.
 
-## Features
+## Características
 
-- Users Events Endpoints.
-- Users Authentication Endpoints.
-- Data and token validation through middlewares.
-- Endpoints protected by JSON Web Token.
-- Models and Database hosted by MongoDB Atlas.
+- Endpoints de eventos del usuario.
+- Endpoints para autenticación de los usuarios.
+- Data y validación de token a través de middlewares.
+- Endpoints protegidos con JSON Web Token.
+- Modelos y Base de datos alojados por Mongo Atlas.
 
-## Purpose of project
+## Propósito del proyecto
 
-- This project was development to apply and practice the backend technologies shown below.
+- Este proyecto fue desarrollado para aplicar y practicar las tecnologías de back-end que se muestran a continuación.
 
 ## Tech Stack
 
@@ -22,7 +22,7 @@
 - Mongoose.
 - MongoDB Atlas.
 
-## Development tools and other Technologies
+## Herramientas de Desarrollo
 
 - [ExpressJS](https://expressjs.com/)
 - [Nodejs](https://nodejs.org/en/)
@@ -30,26 +30,27 @@
 - [Mongoose](https://mongoosejs.com/)
 - [Vscode](https://code.visualstudio.com/)
 
-## Demo Calendar App
+## Demo Calendario App
 
-- [Calendar App](https://calendar-app-njca.netlify.app/)
+- [Calendario App](https://calendar-app-njca.netlify.app/)
 
-## Repo Calendar App
+## Repo Calendario App
 
-- [Calendar App](https://github.com/nca1478/react-calendar-app)
+- [Calendario App](https://github.com/nca1478/react-calendar-app)
 
-## Requirements
+## Requerimientos
 
-- Nodejs v14 or better.
+- Nodejs v14 o superior.
 
-## Installation
+## Instalación
 
 > npm install
 
-## Run the api
+## Ejecutar la api
 
-> npm run dev
+> npm run dev (modo development)
+> npm start (modo production)
 
-## Enter file
+## Archivo de entrada
 
 > index.js
