@@ -4,9 +4,9 @@ const { isDate } = require('../helpers/isDate')
 
 const validateCreateEvent = () => {
   return [
-    check('title', 'Title is required').not().isEmpty(),
-    check('start', 'Start date is not correct').custom(isDate),
-    check('end', 'End date is not correct').custom(isDate),
+    check('title', 'El título es requerido').not().isEmpty(),
+    check('start', 'La fecha inicio no es correcta').custom(isDate),
+    check('end', 'La fecha final no es correcta').custom(isDate),
     routerErrors,
   ]
 }

@@ -3,9 +3,12 @@ const { routerErrors } = require('../middlewares/routerErrors')
 
 const validateCreateUser = () => {
   return [
-    check('name', 'Name is required').not().isEmpty(),
-    check('email', 'Email is not correct').isEmail(),
-    check('password', 'Password must be at least 6 characters').isLength({
+    check('name', 'El nombre es requerido').not().isEmpty(),
+    check('email', 'El email no es correcto').isEmail(),
+    check(
+      'password',
+      'La contraseña debe tener al menos 6 caracteres'
+    ).isLength({
       min: 6,
     }),
     routerErrors,
@@ -14,8 +17,8 @@ const validateCreateUser = () => {
 
 const validateLoginUser = () => {
   return [
-    check('email', 'Email is not correct').isEmail(),
-    check('password', 'Password is required').not().isEmpty(),
+    check('email', 'El email no es correcto').isEmail(),
+    check('password', 'La contraseña es requerida').not().isEmpty(),
     routerErrors,
   ]
 }

@@ -19,5 +19,5 @@ app.use('/api/auth', require('./routes/auth'))
 app.use('/api/events', require('./routes/events'))
 
 app.listen(PORT, () => {
-  console.log(`Server on port ${PORT}`)
+  console.log(`Servidor iniciado en puerto: ${PORT}`)
 })

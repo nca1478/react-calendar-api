@@ -16,7 +16,7 @@ const createEvent = async (req, res = response) => {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'Error creating event',
+      msg: 'Error creando el evento',
     })
   }
 }
@@ -39,7 +39,7 @@ const updateEvent = async (req, res = response) => {
     if (!event) {
       return res.status(404).json({
         ok: false,
-        msg: 'Event not found',
+        msg: 'Evento no encontrado',
       })
     }
 
@@ -47,7 +47,7 @@ const updateEvent = async (req, res = response) => {
     if (event.user.toString() !== uid) {
       return res.status(400).json({
         ok: false,
-        msg: 'You can not change this event',
+        msg: 'No puedes cambiar este evento',
       })
     }
 
@@ -70,7 +70,7 @@ const updateEvent = async (req, res = response) => {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'Error updating event',
+      msg: 'Error actualizando el evento',
     })
   }
 }
@@ -84,27 +84,27 @@ const deleteEvent = async (req, res = response) => {
     if (!event) {
       return res.status(404).json({
         ok: false,
-        msg: 'Event not found',
+        msg: 'Evento no encontrado',
       })
     }
 
     if (event.user.toString() !== uid) {
       return res.status(400).json({
         ok: false,
-        msg: 'You can not change this event',
+        msg: 'No puedes cambiar este evento',
       })
     }
 
     await Event.findByIdAndDelete(eventId)
     res.json({
       ok: true,
-      msg: 'Event deleted successfully',
+      msg: 'Evento borrado exitosamente',
     })
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'Error deleting event!',
+      msg: 'Error borrando el evento',
     })
   }
 }

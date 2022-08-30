@@ -11,7 +11,7 @@ const createUser = async (req, res = response) => {
     if (user) {
       return res.status(400).json({
         ok: false,
-        msg: 'Email already belongs to another user',
+        msg: 'El correo electrónico ya pertenece a otro usuario',
       })
     }
 
@@ -27,7 +27,7 @@ const createUser = async (req, res = response) => {
 
     return res.status(201).json({
       ok: true,
-      msg: 'User created successfully',
+      msg: 'Usuario creado exitosamente',
       user: {
         uid: user._id,
         name: user.name,
@@ -38,7 +38,7 @@ const createUser = async (req, res = response) => {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'Please contact administrator',
+      msg: 'Por favor contacte al administrador',
     })
   }
 }
@@ -51,7 +51,7 @@ const loginUser = async (req, res = response) => {
     if (!user) {
       return res.status(400).json({
         ok: false,
-        msg: 'User not found with that email',
+        msg: 'Usuario no encontrado con ese correo electrónico',
       })
     }
 
@@ -59,7 +59,7 @@ const loginUser = async (req, res = response) => {
     if (!validPassword) {
       return res.status(400).json({
         ok: false,
-        msg: 'Password is not correct',
+        msg: 'Contraseña no es correcta',
       })
     }
 

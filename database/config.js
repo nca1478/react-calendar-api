@@ -12,10 +12,10 @@ const dbConnection = async () => {
       useUnifiedTopology: true,
     })
 
-    console.log('DB Online')
+    console.log('Base de Datos en Línea')
   } catch (error) {
     console.log(error)
-    throw new Error('Error Starting Database')
+    throw new Error('Error iniciando la Base de Datos')
   }
 }
 
