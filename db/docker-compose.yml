@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  db:
+    container_name: calendar-db
+    image: mongo:5
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGODB_DATABASE: calendar-db
+    volumes:
+      - ../data:/data/db
