@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "b49a173c-d175-4e82-aa70-d41b379a42ab",
+		"name": "CalendarApp API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4677971"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Login Usuario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"if( jsonData.ok ){    \r",
+									"    pm.environment.set(\"token\", jsonData.token);\r",
+									"}\r",
+									"else{\r",
+									"    console.log('The token was not updated');\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"nca1478@yahoo.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_api}}/auth/login",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Nelson Cadenas\",\r\n    \"email\": \"nca1478@yahoo.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_api}}/auth/new",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"auth",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Renovar Token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url_api}}/auth/renew",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"auth",
+								"renew"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Eventos",
+			"item": [
+				{
+					"name": "Crear Evento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Test integracion\",\r\n    \"notes\": \"Test integracion\",\r\n    \"start\": 1000000,\r\n    \"end\": 2000000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_api}}/events",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Eventos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url_api}}/events",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Evento",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Estudiar react\",\r\n    \"notes\": \"Ver videos del curso de react\",\r\n    \"start\": 1,\r\n    \"end\": 1000000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_api}}/events/60134466c4b1df307c397071",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"events",
+								"60134466c4b1df307c397071"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Evento",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url_api}}/events/60134475c4b1df307c397072",
+							"host": [
+								"{{url_api}}"
+							],
+							"path": [
+								"events",
+								"60134475c4b1df307c397072"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
