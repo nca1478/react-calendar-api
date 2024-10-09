@@ -2,10 +2,12 @@
   "name": "calendar-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon --inspect=0.0.0.0:9229 -L src/index.js",
-    "start": "node src/index.js"
+    "start": "babel-node src/index.js",
+    "dev": "nodemon --inspect=0.0.0.0:9229 -L --exec babel-node src/index.js",
+    "build": "babel src/ --out-dir build",
+    "serve": "node build/index.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,10 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
